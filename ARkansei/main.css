@@ -1,0 +1,355 @@
+
+
+
+#container{
+    position: relative;
+    z-index:1;
+      /*以下はレイアウトのための記述*/
+    background:#fff;
+    padding:30px 0;
+    text-align: center;
+  }
+  
+  *{box-sizing: border-box;}
+  
+  ul.gnav-navi-1{
+  background: rgb(101, 87, 87);
+  padding: 0;
+  text-align: center;
+  }
+  ul.gnav-navi-1 li{
+  display: inline-block;
+  }
+  
+  
+  ul.gnav-navi-1 li a{
+  display: block;
+  padding: 1em;
+  color: #fff;
+  text-decoration: none;
+  }
+  ul.gnav-navi-1 a::first-line{
+  font-size: 16px;
+  font-weight: bold;
+  }
+  
+  ul.gnav-navi-1 li:hover{
+    background: #FF7F50;
+    }
+  
+  /*========= ナビゲーションのためのCSS ===============*/
+  
+  /*アクティブになったエリア*/
+  #g-nav.panelactive{
+    /*position:fixed;にし、z-indexの数値を大きくして前面へ*/
+    position:fixed;
+    z-index: 999;
+  top: 0;
+  width:100%;
+    height: 100vh;
+  }
+  
+  /*丸の拡大*/
+  .circle-bg{
+    position: fixed;
+  z-index:3;
+    /*丸の形*/
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: #999;
+    /*丸のスタート位置と形状*/
+  transform: scale(0);/*scaleをはじめは0に*/
+    top:calc(50% - 50px);/*50%から円の半径を引いた値*/
+    left:calc(50% - 50px);/*50%から円の半径を引いた値*/
+    transition: all .6s;/*0.6秒かけてアニメーション*/
+  }
+  
+  .circle-bg.circleactive{
+  transform: scale(50);/*クラスが付与されたらscaleを拡大*/
+  }
+  
+  /*ナビゲーションの縦スクロール*/
+  #g-nav-list{
+    display: none;/*はじめは表示なし*/
+    /*ナビの数が増えた場合縦スクロール*/
+    position: fixed;
+    z-index: 999; 
+    width: 100%;
+    height: 100vh;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  #g-nav.panelactive #g-nav-list{
+     display: block; /*クラスが付与されたら出現*/
+  }
+  
+  /*ナビゲーション*/
+  #g-nav ul {
+  opacity: 0;/*はじめは透過0*/
+    /*ナビゲーション天地中央揃え※レイアウトによって調整してください。不必要なら削除*/
+    position: absolute;
+    z-index: 999;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+  }
+  
+  /*背景が出現後にナビゲーションを表示*/
+  #g-nav.panelactive ul {
+    opacity:1;
+  }
+  
+  /* 背景が出現後にナビゲーション li を表示※レイアウトによって調整してください。不必要なら削除*/
+  #g-nav.panelactive ul li{
+  animation-name:gnaviAnime;
+  animation-duration:1s;
+  animation-delay:.2s;/*0.2 /*秒遅らせて出現*/
+  animation-fill-mode:forwards;
+  opacity:0;
+  }
+  @keyframes gnaviAnime{
+  0% {
+  opacity: 0;
+  }
+  100% {
+  opacity: 1;
+  }
+  }
+  
+  /*リストのレイアウト設定*/
+  #g-nav li{
+  text-align: center; 
+  list-style: none;
+  }
+  
+  #g-nav li a{
+  color: #333;
+  text-decoration: none;
+  padding:10px;
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: bold;
+  }
+  
+  
+  /*========= ボタンのためのCSS ===============*/
+  .openbtn1{
+  position:fixed;
+  top:10px;
+  right: 10px;
+  z-index: 9999;/*ボタンを最前面に*/
+  cursor: pointer;
+    width: 50px;
+    height:50px;
+  }
+  
+  /*×に変化*/
+  .openbtn1 span{
+    display: inline-block;
+    transition: all .4s;
+    position: absolute;
+    left: 14px;
+    height: 3px;
+    border-radius: 2px;
+  background-color: #666;
+    width: 45%;
+  }
+  
+  .openbtn1 span:nth-of-type(1) {
+  top:15px; 
+  }
+  
+  .openbtn1 span:nth-of-type(2) {
+  top:23px;
+  }
+  
+  .openbtn1 span:nth-of-type(3) {
+  top:31px;
+  }
+  
+  .openbtn1.active span:nth-of-type(1) {
+    top: 18px;
+    left: 18px;
+    transform: translateY(6px) rotate(-45deg);
+    width: 30%;
+  }
+  
+  .openbtn1.active span:nth-of-type(2) {
+  opacity: 0;
+  }
+  
+  .openbtn1.active span:nth-of-type(3){
+    top: 30px;
+    left: 18px;
+    transform: translateY(-6px) rotate(45deg);
+    width: 30%;
+  }
+  
+  
+  .pizza{
+    position:relative;
+    width:500px;
+    height:400px;
+    background:#C5E1A5;
+    font-size: 4px;
+    left: 50%;
+      margin-right: -50%;
+      transform: translate(-50%, -0%)
+      
+  }
+  
+  .pizza img{
+    position:absolute;
+    top:50px;
+    left:50px;
+    width:400px;
+    
+    
+  }
+  
+  .pizza p{
+    position:absolute;
+    top:250px;
+    left:200px;
+    width: 500px;
+    background:rgb(250, 178, 45);
+    padding:60px;
+    box-shadow:0 0 10px #999;
+    font-size:1px;
+    line-height:30px;
+    z-index:10;
+    
+  }
+  
+  
+
+  .open{
+    text-align: center;
+  }
+
+  .bg_pattern {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #fff;
+    z-index: -1;
+  }
+
+  .Paper_v2 {
+    background-image:
+      repeating-linear-gradient(to bottom,
+        transparent 25px,
+        rgba(0, 0, 0, 0.04) 26px,  rgba(0, 0, 0, 0.04) 26px,
+        transparent 27px,  transparent 51px, 
+        rgba(0, 0, 0, 0.04) 52px,  rgba(0, 0, 0, 0.04) 52px,
+        transparent 53px,  transparent 77px, 
+        rgba(0, 0, 0, 0.04) 78px,  rgba(0, 0, 0, 0.04) 78px,
+        transparent 79px,  transparent 103px, 
+        rgba(0, 0, 0, 0.04) 104px,  rgba(0, 0, 0, 0.04) 104px,
+        transparent 105px,  transparent 129px, 
+        rgba(0, 0, 0, 0.04) 130px,  rgba(0, 0, 0, 0.04) 130px),
+  
+      repeating-linear-gradient(to right,
+        transparent 25px,
+        rgba(0, 0, 0, 0.04) 26px,  rgba(0, 0, 0, 0.04) 26px,
+        transparent 27px,  transparent 51px, 
+        rgba(0, 0, 0, 0.04) 52px,  rgba(0, 0, 0, 0.04) 52px,
+        transparent 53px,  transparent 77px, 
+        rgba(0, 0, 0, 0.04) 78px,  rgba(0, 0, 0, 0.04) 78px,
+        transparent 79px,  transparent 103px, 
+        rgba(0, 0, 0, 0.04) 104px,  rgba(0, 0, 0, 0.04) 104px,
+        transparent 105px,  transparent 129px, 
+        rgba(0, 0, 0, 0.04) 130px,  rgba(0, 0, 0, 0.04) 130px);
+  }
+
+  section {
+    max-width: 1024x;
+    margin: 0 auto;
+    padding: 100px 20px 1000px;
+  }
+
+  .layer-bg{
+    background: url(station.jpg) no-repeat 0 0;
+    background-size: 100%;
+    height: 100px;
+    text-align: center;
+
+
+
+  }
+
+  .open{
+    text-align: center;
+  }
+
+  p{
+    text-shadow: 1px 2px 3px #808080;
+    text-align: center;
+  }
+
+  .layer-txt{
+    -webkit-text-stroke: 4px 4px 4px rgba(255, 0, 0, 0.582);
+    -webkit-text-stroke-color: 1px 1px 1px red;
+    color: rgb(255, 255, 255);
+    letter-spacing: 0.4rem;
+  }
+  
+  .layer-in{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    
+
+  }
+
+  .layer{
+    position: relative;
+    margin: 0 auto;
+    text-align: center;
+    height: 300px;
+  }
+
+  @media screen and (max-width: 600px) {
+    .layer-bg{
+      height: 200px;
+    }
+    .layer-in{
+      width: 300px;
+      height: 70px;
+    }
+    .layer-txt{
+     font-size: 1.4rem;
+    }
+  }
+  
+  /* PC向けの設定 */
+  @media screen and (min-width: 6px) {
+    .layer-bg{
+      height: 300px;
+    }
+    .layer-in{
+      width: 400px;
+      height: 100px;
+    }
+    .layer-txt{
+      font-size: 2rem;
+    }
+  }
+
+
+.btn {
+  display: inline-block;
+  background: salmon; /* 背景色 */
+  color: rgb(255, 255, 255); /* 文字色 */
+  padding: 16px 40px; /* 上下の余白、左右の余白 */
+  text-decoration: none; /* デフォルトで入るリンクの下線を消す */
+  border-radius: 30px; /* 角を丸くする */
+}

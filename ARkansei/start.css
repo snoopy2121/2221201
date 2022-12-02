@@ -1,0 +1,92 @@
+@charset "UTF-8";
+
+body {
+    padding: 0;
+    margin: 20px;
+    background-color: rgb(254, 254, 217);
+  }
+/* 大枠ボックス */
+.layer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  
+  /* 重ねる文字の基本設定 */
+  .layer-txt{
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.4);
+    color: rgb(251, 201, 93);
+    letter-spacing: 0.4rem;
+  }
+  
+  /* SP向けの設定 */
+  @media screen and (max-width: 600px) {
+    .layer-txt{
+     font-size: 1.4rem;
+     padding: 4rem 0;
+    }
+  }
+  
+  /* PC向けの設定 */
+  @media screen and (min-width: 601px) {
+    .layer-txt{
+      font-size: 2rem;
+      padding: 8rem 0;
+    }
+  }
+
+  
+  
+  .title {
+    margin: 0;
+    font-size: 100px;
+    font-weight: bold;
+    text-align: center;
+    color: #ff6347;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: flowing-anim 8s;
+  }
+
+  /* 013 */
+.button013 a {
+  background: rgb(255, 184, 130);
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 240px;
+  padding: 10px 25px;
+  color: #313131;
+  transition: 0.3s ease-in-out;
+  font-weight: 500;
+  z-index:0;
+  border-left: solid 5px #f1640c;
+}
+.button013 a:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  display: block;
+  background: #f1640c;
+  transition: .3s;
+  left:0;
+}
+.button013 a:hover {
+  color: rgb(255, 195, 110);
+}
+.button013 a:hover:before {
+  width: 100%;
+  z-index: -1;
+}
+
+h2
+{
+  text-align: center;
+}
